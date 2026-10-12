@@ -483,21 +483,32 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
             text-align: center;
         }
 
+        .stat-item {
+            padding: 8px 12px;
+        }
+
+        .stat-item + .stat-item {
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
         .stat-item h3 {
-            font-size: 3.5rem;
+            font-size: clamp(2.25rem, 4.5vw, 3.5rem);
             font-weight: 800;
+            line-height: 1.1;
             color: white;
             margin-bottom: 8px;
+            white-space: nowrap;
         }
 
         .stat-item p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
         /* About */
@@ -597,6 +608,182 @@
             transform: translateY(-2px);
         }
 
+        /* Pricing */
+        .pricing {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .currency-toggle {
+            display: inline-flex;
+            background: var(--bg-alt);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 100px;
+            padding: 5px;
+            margin-top: 32px;
+        }
+
+        .currency-toggle button {
+            border: none;
+            background: transparent;
+            padding: 10px 26px;
+            border-radius: 100px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle button.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .price-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 32px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 15px 35px rgba(15, 118, 110, 0.15);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 18px;
+            background: var(--accent);
+            color: white;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .price-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .price-type {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .price-from {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .price-amount {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .price-amount small {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-light);
+            letter-spacing: 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 24px 0 32px;
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            position: relative;
+            padding: 8px 0 8px 28px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .price-card .btn {
+            justify-content: center;
+            padding: 14px 24px;
+            width: 100%;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 48px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .call-support {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 64px auto 0;
+            padding: 28px 32px;
+            max-width: 800px;
+            background: var(--bg-alt);
+            border: 1px dashed rgba(20, 184, 166, 0.5);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .call-support strong {
+            color: var(--primary-dark);
+        }
+
+        .call-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e5e7eb;
+        }
+
         /* Footer */
         footer {
             padding: 60px 0 40px;
@@ -657,6 +844,15 @@
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 28px 16px;
+            }
+
+            .stat-item + .stat-item {
+                border-left: none;
+            }
+
+            .stat-item p {
+                font-size: 0.95rem;
             }
 
             .stat-item h3 {
@@ -676,6 +872,7 @@
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -721,11 +918,11 @@
                 </div>
                 <div class="stat-item reveal">
                     <h3>MENA</h3>
-                    <p>Regional Expertise</p>
+                    <p>Payments Market Expertise</p>
                 </div>
                 <div class="stat-item reveal">
-                    <h3>End-to-End</h3>
-                    <p>Quality Ownership</p>
+                    <h3>6</h3>
+                    <p>Core QA Services, End to End</p>
                 </div>
             </div>
         </div>
@@ -818,6 +1015,118 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Transparent Pricing</span>
+                <h2 class="section-title">Simple, Clear Engagement Rates</h2>
+                <p class="section-subtitle">Fixed-scope packages and flexible retainers. Choose your currency below.</p>
+                <div class="currency-toggle" role="group" aria-label="Currency">
+                    <button type="button" class="active" data-currency="usd">USD ($)</button>
+                    <button type="button" data-currency="inr">INR (₹)</button>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <h3>Test Strategy & Governance</h3>
+                    <div class="price-type">Fixed package · 1–2 weeks</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$1,500" data-inr="₹1,25,000">$1,500</div>
+                    <ul class="price-features">
+                        <li>Risk-based test strategy document</li>
+                        <li>Quality gates and release criteria</li>
+                        <li>Governance and sign-off framework</li>
+                        <li>Walkthrough call with your team</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Test%20Strategy%20%26%20Governance%20enquiry" class="btn btn-secondary">Get a Quote</a>
+                </div>
+
+                <div class="price-card featured reveal">
+                    <span class="price-badge">Most Popular</span>
+                    <h3>Payment Gateway Testing</h3>
+                    <div class="price-type">Fixed package · 2–4 weeks</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$1,800" data-inr="₹1,50,000">$1,800</div>
+                    <ul class="price-features">
+                        <li>End-to-end integration validation</li>
+                        <li>3DS routing and authentication flows</li>
+                        <li>Visa / Mastercard compliance checks</li>
+                        <li>Defect report with fix guidance</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Payment%20Gateway%20Testing%20enquiry" class="btn btn-primary">Get a Quote</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <h3>Automation Strategy</h3>
+                    <div class="price-type">Fixed package · 2–4 weeks</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$2,000" data-inr="₹1,65,000">$2,000</div>
+                    <ul class="price-features">
+                        <li>Automation roadmap and tool selection</li>
+                        <li>Scalable framework blueprint</li>
+                        <li>Coverage and ROI analysis</li>
+                        <li>Hand-off with team guidance</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Automation%20Strategy%20enquiry" class="btn btn-secondary">Get a Quote</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <h3>CI/CD Pipeline Setup</h3>
+                    <div class="price-type">Fixed package · 3–5 weeks</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$2,500" data-inr="₹2,00,000">$2,500</div>
+                    <ul class="price-features">
+                        <li>Pipeline design and implementation</li>
+                        <li>Integrated automated quality gates</li>
+                        <li>Deployment strategy for safe releases</li>
+                        <li>Documentation and team handover</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=CI%2FCD%20Pipeline%20Setup%20enquiry" class="btn btn-secondary">Get a Quote</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <h3>QA Team Leadership</h3>
+                    <div class="price-type">Monthly retainer · ~20 hrs/month</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$1,500" data-inr="₹1,25,000">$1,500 <small>/ month</small></div>
+                    <ul class="price-features">
+                        <li>Part-time QA lead for your team</li>
+                        <li>Mentoring, reviews and best practices</li>
+                        <li>Weekly sync and progress reporting</li>
+                        <li>Minimum 3-month engagement</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=QA%20Team%20Leadership%20enquiry" class="btn btn-secondary">Get a Quote</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <h3>Quality Metrics & Reporting</h3>
+                    <div class="price-type">Fixed package · 1–2 weeks</div>
+                    <div class="price-from">Starting from</div>
+                    <div class="price-amount" data-usd="$900" data-inr="₹75,000">$900</div>
+                    <ul class="price-features">
+                        <li>KPI and metrics framework</li>
+                        <li>Dashboard design and setup</li>
+                        <li>Early risk indicators</li>
+                        <li>Reporting cadence for stakeholders</li>
+                    </ul>
+                    <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Quality%20Metrics%20%26%20Reporting%20enquiry" class="btn btn-secondary">Get a Quote</a>
+                </div>
+            </div>
+
+            <div class="call-support reveal">
+                <span><strong>Need quick advice?</strong> Book a 60-minute consulting call at</span>
+                <span class="price-amount" style="font-size:1.6rem;margin:0;" data-usd="$60" data-inr="₹5,000">$60</span>
+                <span>per hour, over:</span>
+                <span class="call-chip">💬 Microsoft Teams</span>
+                <span class="call-chip">🎥 Zoom</span>
+            </div>
+
+            <p class="pricing-note reveal">Prices are starting points. Final quotes depend on scope, complexity and timeline. Every engagement begins with a free 20-minute discovery call.</p>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
@@ -884,18 +1193,18 @@
 
                     <ul class="contact-links">
                         <li>
-                            <a href="https://github.com/nirmalcse" target="_blank" class="contact-link">
-                                <span>GitHub</span>
+                            <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Book%20a%20Microsoft%20Teams%20call" class="contact-link">
+                                <span>💬 Teams Call Support</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:rnirmalkumar.qe@gmail.com?subject=Book%20a%20Zoom%20call" class="contact-link">
+                                <span>🎥 Zoom Call Support</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://linkedin.com/in/rnirmalkumar" target="_blank" class="contact-link">
                                 <span>LinkedIn</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/nirmalcse/atlasqa" target="_blank" class="contact-link">
-                                <span>View this Repo</span>
                             </a>
                         </li>
                     </ul>
@@ -950,6 +1259,33 @@
                 }
             });
         });
+
+        // Currency toggle (USD / INR)
+        function setCurrency(cur) {
+            document.querySelectorAll('[data-usd]').forEach(el => {
+                const value = el.getAttribute('data-' + cur);
+                const first = el.firstChild;
+                if (first && first.nodeType === Node.TEXT_NODE) {
+                    // keep any child markup (e.g. "/ month") and only swap the price text
+                    first.nodeValue = el.querySelector('small') ? value + ' ' : value;
+                } else {
+                    el.textContent = value;
+                }
+            });
+            document.querySelectorAll('.currency-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.currency === cur);
+            });
+        }
+
+        document.querySelectorAll('.currency-toggle button').forEach(btn => {
+            btn.addEventListener('click', () => setCurrency(btn.dataset.currency));
+        });
+
+        // Default to INR for visitors in India
+        try {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta') setCurrency('inr');
+        } catch (e) {}
 
         // Add stagger animation to grid items
         document.querySelectorAll('.services-grid .service-card').forEach((card, index) => {
